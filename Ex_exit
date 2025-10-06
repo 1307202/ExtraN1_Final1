@@ -1,17 +1,17 @@
 public class ControleNotas {
-    // Variáveis para armazenar dados (máximo 5 alunos)
+    
     private double nota1, nota2, nota3, nota4, nota5;
     private String nome1, nome2, nome3, nome4, nome5;
     private int quantidadeAlunos;
 
-    // Construtor
+    
     public ControleNotas() {
         quantidadeAlunos = 0;
-        // Inicializar notas com -1 (indicando não cadastrado)
+        
         nota1 = nota2 = nota3 = nota4 = nota5 = -1;
     }
 
-    // Cadastrar aluno
+   
     public boolean cadastrarAluno(String nome, double nota) {
         if (quantidadeAlunos >= 5) {
             return false; // Limite atingido
@@ -34,7 +34,7 @@ public class ControleNotas {
         return true;
     }
 
-    // Calcular média
+    
     public double calcularMedia() {
         if (quantidadeAlunos == 0) return 0;
 
@@ -50,7 +50,7 @@ public class ControleNotas {
         return contador > 0 ? soma / contador : 0;
     }
 
-    // Encontrar maior nota
+    
     public double encontrarMaiorNota() {
         double maior = -1;
 
@@ -63,7 +63,7 @@ public class ControleNotas {
         return maior;
     }
 
-    // Encontrar menor nota
+    
     public double encontrarMenorNota() {
         double menor = 100; // assumindo que notas ≤ 100
 
@@ -76,7 +76,7 @@ public class ControleNotas {
         return menor;
     }
 
-    // Contar aprovados (nota >= 7.0)
+    
     public int contarAprovados() {
         int aprovados = 0;
 
@@ -89,7 +89,7 @@ public class ControleNotas {
         return aprovados;
     }
 
-    // Listar alunos
+    
     public void listarAlunos() {
         int i = 1;
         if (nota1 != -1) System.out.println(i++ + ". " + nome1 + " - " + nota1);
@@ -99,12 +99,12 @@ public class ControleNotas {
         if (nota5 != -1) System.out.println(i++ + ". " + nome5 + " - " + nota5);
     }
 
-    // Getter quantidade de alunos
+    
     public int getQuantidadeAlunos() {
         return quantidadeAlunos;
     }
 
-    // Desafio 1: buscar nota por nome
+    
     public double buscarNotaPorNome(String nome) {
         if (nome.equals(nome1)) return nota1;
         if (nome.equals(nome2)) return nota2;
@@ -114,7 +114,7 @@ public class ControleNotas {
         return -1; // não encontrado
     }
 
-    // Desafio 2: alterar nota
+    
     public boolean alterarNota(String nome, double novaNota) {
         if (nome.equals(nome1)) { nota1 = novaNota; return true; }
         if (nome.equals(nome2)) { nota2 = novaNota; return true; }
@@ -124,7 +124,7 @@ public class ControleNotas {
         return false; // aluno não encontrado
     }
 
-    // Desafio 3: gerar relatório completo
+    
     public void gerarRelatorio() {
         System.out.println("=== RELATÓRIO COMPLETO ===");
         listarAlunos();
