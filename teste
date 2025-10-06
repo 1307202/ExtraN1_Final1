@@ -2,7 +2,7 @@ public class TesteControleNotas {
     public static void main(String[] args) {
         ControleNotas controle = new ControleNotas();
 
-        // Cadastrar alunos
+        
         controle.cadastrarAluno("Ana", 8.5);
         controle.cadastrarAluno("João", 6.0);
         controle.cadastrarAluno("Maria", 9.2);
@@ -18,7 +18,7 @@ public class TesteControleNotas {
         System.out.println("Menor nota: " + controle.encontrarMenorNota());
         System.out.println("Alunos aprovados: " + controle.contarAprovados());
 
-        // Testando desafios
+        
         System.out.println("\nNota da Maria: " + controle.buscarNotaPorNome("Maria"));
         controle.alterarNota("João", 7.5);
         System.out.println("=== RELATÓRIO ATUALIZADO ===");
