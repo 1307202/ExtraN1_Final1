@@ -1,0 +1,27 @@
+public class TesteControleNotas {
+    public static void main(String[] args) {
+        ControleNotas controle = new ControleNotas();
+
+        // Cadastrar alunos
+        controle.cadastrarAluno("Ana", 8.5);
+        controle.cadastrarAluno("João", 6.0);
+        controle.cadastrarAluno("Maria", 9.2);
+        controle.cadastrarAluno("Pedro", 7.8);
+
+        System.out.println("=== LISTA DE ALUNOS ===");
+        controle.listarAlunos();
+
+        System.out.println("\n=== ESTATÍSTICAS ===");
+        System.out.println("Total de alunos: " + controle.getQuantidadeAlunos());
+        System.out.println("Média da turma: " + controle.calcularMedia());
+        System.out.println("Maior nota: " + controle.encontrarMaiorNota());
+        System.out.println("Menor nota: " + controle.encontrarMenorNota());
+        System.out.println("Alunos aprovados: " + controle.contarAprovados());
+
+        // Testando desafios
+        System.out.println("\nNota da Maria: " + controle.buscarNotaPorNome("Maria"));
+        controle.alterarNota("João", 7.5);
+        System.out.println("=== RELATÓRIO ATUALIZADO ===");
+        controle.gerarRelatorio();
+    }
+}

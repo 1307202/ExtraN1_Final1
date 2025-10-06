@@ -1,0 +1,137 @@
+public class ControleNotas {
+    // Variáveis para armazenar dados (máximo 5 alunos)
+    private double nota1, nota2, nota3, nota4, nota5;
+    private String nome1, nome2, nome3, nome4, nome5;
+    private int quantidadeAlunos;
+
+    // Construtor
+    public ControleNotas() {
+        quantidadeAlunos = 0;
+        // Inicializar notas com -1 (indicando não cadastrado)
+        nota1 = nota2 = nota3 = nota4 = nota5 = -1;
+    }
+
+    // Cadastrar aluno
+    public boolean cadastrarAluno(String nome, double nota) {
+        if (quantidadeAlunos >= 5) {
+            return false; // Limite atingido
+        }
+
+        switch (quantidadeAlunos) {
+            case 0:
+                nome1 = nome; nota1 = nota; break;
+            case 1:
+                nome2 = nome; nota2 = nota; break;
+            case 2:
+                nome3 = nome; nota3 = nota; break;
+            case 3:
+                nome4 = nome; nota4 = nota; break;
+            case 4:
+                nome5 = nome; nota5 = nota; break;
+        }
+
+        quantidadeAlunos++;
+        return true;
+    }
+
+    // Calcular média
+    public double calcularMedia() {
+        if (quantidadeAlunos == 0) return 0;
+
+        double soma = 0;
+        int contador = 0;
+
+        if (nota1 != -1) { soma += nota1; contador++; }
+        if (nota2 != -1) { soma += nota2; contador++; }
+        if (nota3 != -1) { soma += nota3; contador++; }
+        if (nota4 != -1) { soma += nota4; contador++; }
+        if (nota5 != -1) { soma += nota5; contador++; }
+
+        return contador > 0 ? soma / contador : 0;
+    }
+
+    // Encontrar maior nota
+    public double encontrarMaiorNota() {
+        double maior = -1;
+
+        if (nota1 != -1 && nota1 > maior) maior = nota1;
+        if (nota2 != -1 && nota2 > maior) maior = nota2;
+        if (nota3 != -1 && nota3 > maior) maior = nota3;
+        if (nota4 != -1 && nota4 > maior) maior = nota4;
+        if (nota5 != -1 && nota5 > maior) maior = nota5;
+
+        return maior;
+    }
+
+    // Encontrar menor nota
+    public double encontrarMenorNota() {
+        double menor = 100; // assumindo que notas ≤ 100
+
+        if (nota1 != -1 && nota1 < menor) menor = nota1;
+        if (nota2 != -1 && nota2 < menor) menor = nota2;
+        if (nota3 != -1 && nota3 < menor) menor = nota3;
+        if (nota4 != -1 && nota4 < menor) menor = nota4;
+        if (nota5 != -1 && nota5 < menor) menor = nota5;
+
+        return menor;
+    }
+
+    // Contar aprovados (nota >= 7.0)
+    public int contarAprovados() {
+        int aprovados = 0;
+
+        if (nota1 >= 7.0) aprovados++;
+        if (nota2 >= 7.0) aprovados++;
+        if (nota3 >= 7.0) aprovados++;
+        if (nota4 >= 7.0) aprovados++;
+        if (nota5 >= 7.0) aprovados++;
+
+        return aprovados;
+    }
+
+    // Listar alunos
+    public void listarAlunos() {
+        int i = 1;
+        if (nota1 != -1) System.out.println(i++ + ". " + nome1 + " - " + nota1);
+        if (nota2 != -1) System.out.println(i++ + ". " + nome2 + " - " + nota2);
+        if (nota3 != -1) System.out.println(i++ + ". " + nome3 + " - " + nota3);
+        if (nota4 != -1) System.out.println(i++ + ". " + nome4 + " - " + nota4);
+        if (nota5 != -1) System.out.println(i++ + ". " + nome5 + " - " + nota5);
+    }
+
+    // Getter quantidade de alunos
+    public int getQuantidadeAlunos() {
+        return quantidadeAlunos;
+    }
+
+    // Desafio 1: buscar nota por nome
+    public double buscarNotaPorNome(String nome) {
+        if (nome.equals(nome1)) return nota1;
+        if (nome.equals(nome2)) return nota2;
+        if (nome.equals(nome3)) return nota3;
+        if (nome.equals(nome4)) return nota4;
+        if (nome.equals(nome5)) return nota5;
+        return -1; // não encontrado
+    }
+
+    // Desafio 2: alterar nota
+    public boolean alterarNota(String nome, double novaNota) {
+        if (nome.equals(nome1)) { nota1 = novaNota; return true; }
+        if (nome.equals(nome2)) { nota2 = novaNota; return true; }
+        if (nome.equals(nome3)) { nota3 = novaNota; return true; }
+        if (nome.equals(nome4)) { nota4 = novaNota; return true; }
+        if (nome.equals(nome5)) { nota5 = novaNota; return true; }
+        return false; // aluno não encontrado
+    }
+
+    // Desafio 3: gerar relatório completo
+    public void gerarRelatorio() {
+        System.out.println("=== RELATÓRIO COMPLETO ===");
+        listarAlunos();
+        System.out.println("Total de alunos: " + getQuantidadeAlunos());
+        System.out.println("Média da turma: " + calcularMedia());
+        System.out.println("Maior nota: " + encontrarMaiorNota());
+        System.out.println("Menor nota: " + encontrarMenorNota());
+        System.out.println("Alunos aprovados: " + contarAprovados());
+    }
+}
